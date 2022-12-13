@@ -3,18 +3,12 @@ import User from "./User";
 import "./ListUsers.css";
 import { useDispatch } from "react-redux";
 import { userSliceActions } from "../redux/UserSlice";
-import { todoSliceActions } from "../redux/TodoSlice";
 function ListUser({ usersData }) {
   // show user details function
-  const dispatch = useDispatch()
-  const showUserDetails =(id) => {
-    dispatch(userSliceActions.onChangeTheActiveId(id))
-    console.log("its work")
-  }
-  //show user tasks function
-  const showUserTasks = (id) => {
-    dispatch(todoSliceActions.onChangeTheActiveId(id))
-  }
+  const dispatch = useDispatch();
+  const showUserDetails = (id) => {
+    dispatch(userSliceActions.onChangeTheActiveId(id));
+  };
   return (
     <div>
       <h3 className="ms-3 ">Users List :</h3>
@@ -26,8 +20,8 @@ function ListUser({ usersData }) {
               firstName={item.firstName}
               lastName={item.lastName}
               image={item.image}
-              showUserDetails = {() => showUserDetails(item.id)}
-              showUserTasks = {() => showUserTasks(item.id)}
+              showUserDetails={() => showUserDetails(item.id)}
+              id={item.id}
             />
           ))}
       </div>
